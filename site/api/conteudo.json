@@ -1,0 +1,40 @@
+{
+ "tonico-mxd20-barbudom-30ml": {
+  "hero": {
+   "h": [
+    "Barba, cabelo e",
+    "sobrancelhas mais fortes",
+    "e preenchidos"
+   ],
+   "resumo": "O Strong Hair Tônico MXD20 Barbudom leva a força da Amazônia direto na raiz: nutre os folículos, ajuda a reduzir a queda e a preencher as falhas. Leve, de absorção rápida e não oleoso.",
+   "checks": [
+    "Desperta os folículos e estimula novos fios",
+    "Fortalece e engrossa a raiz, reduzindo a queda",
+    "Um só tônico para barba, cabelo e sobrancelha"
+   ]
+  },
+  "ofertas": {
+   "1 frasco": {
+    "sub": "30ml · para começar"
+   },
+   "2 frascos": {
+    "selo": "Mais vendido"
+   },
+   "3 frascos": {
+    "sub": "tratamento completo",
+    "selo": "Melhor preço",
+    "padrao": true
+   }
+  },
+  "faq": [
+   [
+    "Posso usar na barba, no cabelo e na sobrancelha?",
+    "Sim. Aplique algumas gotas na área desejada, com a pele limpa e seca, e massageie por 1 minuto."
+   ],
+   [
+    "Quanto dura um frasco?",
+    "O frasco tem 30ml. Usando algumas gotas duas vezes ao dia, rende cerca de um mês, dependendo da área."
+   ]
+  ]
+ }
+}
