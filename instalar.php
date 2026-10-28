@@ -77,6 +77,7 @@ $map = [
   'location.hash = "produtos"' => 'location.hash = "kits"',
   '/assets/logo.webp' => '/assets/logo.png',
   'width="605" height="138"' => 'width="571" height="119"',
+  'loja.js?v=18' => 'loja.js?v=mx2', 'conteudo.js?v=12' => 'conteudo.js?v=mx2',
   'Amazol%C3%A9' => 'MXD20', 'AMAZOLÉ' => 'MXD20', 'Amazolé' => 'MXD20', 'amazole.store' => 'maxd20.com.br',
 ];
 $colors = [
