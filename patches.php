@@ -34,7 +34,7 @@ return [
   ['api/_lib.php', 'str', '<h2 style="color:#E2087D;margin:0 0 8px">', '<h2 style="color:#0B0B0B;margin:0 0 8px">'],
   ['api/_lib.php', 'str', '<h2 style="color:#E2087D">', '<h2 style="color:#0B0B0B">'],
   ['api/_lib.php', 'str', 'background:#E2087D;color:#fff;', 'background:#FFC400;color:#0B0B0B;'],
-  ['api/_lib.php', 'str', "\$esf ='esfoliante-clareador-amazole-200g'; \$ser = 'serum-intimo-clareador-amazole-30ml';", "\$esf = '" . MX_SLUG . "'; \$ser = \$esf;"],
+  ['api/_lib.php', 'str', "\$esf = 'esfoliante-clareador-amazole-200g'; \$ser = 'serum-intimo-clareador-amazole-30ml';", "\$esf = '" . MX_SLUG . "'; \$ser = \$esf;"],
   ['api/_lib.php', 'str', "if (\$sku === 'BUMP-ESF200') \$out[] = \$esf;", "if (\$sku === 'BUMP-MXD20') \$out[] = \$esf;"],
   ['api/_lib.php', 'str', "elseif (\$sku === 'UPS-SER30') \$out[] = \$ser;", "elseif (\$sku === 'UPS-MXD20') \$out[] = \$ser;"],
 
