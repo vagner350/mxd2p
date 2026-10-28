@@ -3,10 +3,26 @@
 // Monta o site a partir da mesma base da amazole.store (mesma tecnologia, API e gateway Appmax),
 // aplica a marca MXD20 (preto e amarelo) e coloca por cima os arquivos próprios da pasta site/.
 // Uso: https://maxd20.com.br/_deploy/instalar.php?k=<chave>
-header('Content-Type: application/json; charset=utf-8');
-header('Cache-Control: no-store');
+// Também roda pela linha de comando (tarefa cron da hospedagem): php instalar.php
+// Nesse modo só instala quando o repositório mudou desde a última instalação e grava o resultado em report.json.
 const KEY_HASH = '6539e2a47bd1c54374c4045f19aa83d791f70a7440f45caf2b46709a53967cf4';
-if (!hash_equals(KEY_HASH, hash('sha256', (string)($_GET['k'] ?? '')))) { http_response_code(404); echo '{"error":"nao_encontrado"}'; exit; }
+$CLI = PHP_SAPI === 'cli';
+if ($CLI) {
+  $rep = __DIR__ . '/report.json';
+  $ver = @filemtime(__DIR__ . '/instalar.php') . '-' . @filemtime(__DIR__ . '/patches.php') . '-' . @md5_file(__DIR__ . '/site/index.html');
+  if (is_file($rep) && (json_decode((string)file_get_contents($rep), true)['versao'] ?? '') === $ver && empty($argv[1])) exit(0);
+  $_GET = [];
+  ob_start();
+  register_shutdown_function(function () use ($rep, $ver) {
+    $out = ob_get_clean(); $j = json_decode((string)$out, true) ?: ['saida' => $out];
+    $j['versao'] = $ver; $j['quando'] = date('c');
+    file_put_contents($rep, json_encode($j, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+  });
+} else {
+  header('Content-Type: application/json; charset=utf-8');
+  header('Cache-Control: no-store');
+  if (!hash_equals(KEY_HASH, hash('sha256', (string)($_GET['k'] ?? '')))) { http_response_code(404); echo '{"error":"nao_encontrado"}'; exit; }
+}
 @set_time_limit(300);
 
 $HOME = '/home/u616319980/domains';
