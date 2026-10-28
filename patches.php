@@ -25,6 +25,10 @@ return [
   ['assets/loja.js', 'str', 'function chrome(active){', "function chrome(active){\n  if (!document.querySelector('link[href*=\"mxd20.css\"]')) { const l = document.createElement(\"link\"); l.rel = \"stylesheet\"; l.href = \"/assets/mxd20.css?v=1\"; document.head.appendChild(l); }"],
   ['assets/loja.js', 'str', 'Olá! Tenho uma dúvida sobre os produtos Amazolé.', 'Olá! Tenho uma dúvida sobre o Tônico MXD20.'],
 
+  // pop-up de 10%: quem chega de anúncio (utm/fbclid/gclid) só vê depois de 45s ou ao tentar sair
+  ['assets/loja.js', 'str', "  setTimeout(go, 12000);\n  document.addEventListener(\"mouseout\", e => { if (!e.relatedTarget && e.clientY < 8) go(); });\n  window.addEventListener(\"scroll\", () => { if (scrollY > document.body.scrollHeight * 0.45) go(); }, { passive: true });",
+    "  let ad = false; try { ad = /[?&](utm_source|utm_campaign|fbclid|gclid|gbraid|wbraid)=/i.test(location.search) || sessionStorage.getItem(\"mx_ad\") === \"1\"; if (ad) sessionStorage.setItem(\"mx_ad\", \"1\"); } catch (_) {}\n  setTimeout(go, ad ? 45000 : 15000);\n  document.addEventListener(\"mouseout\", e => { if (!e.relatedTarget && e.clientY < 8) go(); });\n  if (!ad) window.addEventListener(\"scroll\", () => { if (scrollY > document.body.scrollHeight * 0.6) go(); }, { passive: true });"],
+
   // ---------- api/_lib.php ----------
   ['api/_lib.php', 'str', "\$ch = cfg()['hostinger_channel'] ?? 'scha_01M50JEQZNPZS0ZZT4J0WGQ9GJ';", "\$ch = '" . MX_CHANNEL . "';"],
   ['api/_lib.php', 're', "/\n\s*\. '<div style=\"border:2px dashed #14AEB8.*?<\/div>'/s", ''],

@@ -43,6 +43,13 @@
 .trust div:first-child{border-left:0}
 .trust svg{flex:none;width:40px;height:40px}
 @media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.trust .wrap{grid-template-columns:minmax(0,1fr);gap:14px}.trust div{border-left:0;justify-content:flex-start}}
+.sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:45;background:#0B0B0B;border-top:2px solid var(--yel);box-shadow:0 -6px 20px rgba(0,0,0,.25);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:14px;transform:translateY(110%);transition:transform .25s}
+.sticky-buy.show{transform:none}
+.sticky-buy .i{flex:1;min-width:0;color:#fff}
+.sticky-buy b{font-family:var(--display);font-weight:900;font-size:18px;color:var(--yel)!important;display:block}
+.sticky-buy span{font-size:12.5px;color:#CFCFCF;font-weight:700;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky-buy .btn{padding:13px 22px;font-size:14px;text-transform:uppercase}
+body.has-sticky .wa{bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}
 </style>
 </head>
 <body>
@@ -147,6 +154,7 @@
     <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Compra<br>100% segura</div>
   </div></section>
 </main>
+<div class="sticky-buy" id="sticky" aria-hidden="true"><div class="i"><b id="stP">A partir de R$ 137,00</b><span>Frete grátis · Pix ou até 12x</span></div><a class="btn btn-pink" id="stBtn" href="#kits" tabindex="-1">Escolher meu kit</a></div>
 <script src="/assets/loja.js?v=18"></script>
 <script>
 chrome("home");
@@ -163,8 +171,16 @@ getCatalog().then(all => {
     const o = k.querySelector(".old"); if (old) { o.textContent = money(old, cur); o.hidden = false; } else o.hidden = true;
     if (n > 1) { const per = k.querySelector(".per"); const rest = per.textContent.split(" · ").slice(1).join(" · "); per.textContent = money(Math.round(now / n), cur) + " cada" + (rest ? " · " + rest : ""); }
   });
-  if (isFinite(min)) { const r = Math.floor(min / 100), c = String(min % 100).padStart(2, "0"); document.getElementById("fromPrice").innerHTML = `<small>R$</small>${r}<small>,${c}</small>`; }
+  if (isFinite(min)) { const r = Math.floor(min / 100), c = String(min % 100).padStart(2, "0"); document.getElementById("fromPrice").innerHTML = `<small>R$</small>${r}<small>,${c}</small>`; document.getElementById("stP").textContent = "A partir de " + money(min); }
 }).catch(() => {});
+/* barra fixa: aparece depois do topo e some quando os kits estão na tela */
+(function(){
+  const st = document.getElementById("sticky"), btn = document.getElementById("stBtn");
+  let pastHero = false, kitsOn = false;
+  const upd = () => { const on = pastHero && !kitsOn; st.classList.toggle("show", on); st.setAttribute("aria-hidden", on ? "false" : "true"); btn.tabIndex = on ? 0 : -1; document.body.classList.toggle("has-sticky", on); };
+  new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; upd(); }).observe(document.querySelector(".mx-hero .ctas"));
+  new IntersectionObserver(([e]) => { kitsOn = e.isIntersecting; upd(); }, {threshold: .15}).observe(document.getElementById("kitList"));
+})();
 </script>
 </body>
 </html>

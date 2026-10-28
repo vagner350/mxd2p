@@ -128,6 +128,26 @@ foreach (['kit-2.png' => 'https://i.imgur.com/GocVxsS.png', 'kit-3.png' => 'http
   $b = fetch_img($url);
   if ($b) { file_put_contents("$mx/$name", $b); $img[] = "$name: ok"; } else $img[] = "$name: sem acesso";
 }
+// recorta o espaço vazio das fotos dos kits e deixa quadrada, com o produto ocupando a imagem
+function trim_square($f, $pad = 0.06) {
+  if (!function_exists('imagecreatefromstring') || !is_file($f)) return 'sem GD';
+  $im = @imagecreatefromstring(file_get_contents($f)); if (!$im) return 'ilegivel';
+  imagesavealpha($im, true);
+  $w = imagesx($im); $h = imagesy($im); $x0 = $w; $y0 = $h; $x1 = -1; $y1 = -1;
+  for ($y = 0; $y < $h; $y += 2) for ($x = 0; $x < $w; $x += 2) {
+    $c = imagecolorat($im, $x, $y); $a = ($c >> 24) & 0x7F; $r = ($c >> 16) & 255; $g = ($c >> 8) & 255; $b = $c & 255;
+    if ($a < 100 && ($r < 235 || $g < 235 || $b < 235)) { if ($x < $x0) $x0 = $x; if ($x > $x1) $x1 = $x; if ($y < $y0) $y0 = $y; if ($y > $y1) $y1 = $y; }
+  }
+  if ($x1 < 0) return 'vazia';
+  $cw = $x1 - $x0 + 1; $ch = $y1 - $y0 + 1; $side = (int)round(max($cw, $ch) * (1 + 2 * $pad)); $out = min(900, $side);
+  $c = imagecreatetruecolor($out, $out); imagesavealpha($c, true); imagealphablending($c, false);
+  imagefill($c, 0, 0, imagecolorallocatealpha($c, 255, 255, 255, 127)); imagealphablending($c, true);
+  $s = $out / $side; $dw = (int)round($cw * $s); $dh = (int)round($ch * $s);
+  imagecopyresampled($c, $im, (int)(($out - $dw) / 2), (int)(($out - $dh) / 2), $x0, $y0, $dw, $dh, $cw, $ch);
+  imagesavealpha($c, true); imagepng($c, $f, 8); imagedestroy($im); imagedestroy($c);
+  return "recortada ({$cw}x{$ch})";
+}
+foreach (['kit-2.png', 'kit-3.png'] as $k) if (is_file("$mx/$k")) $img[] = "$k " . trim_square("$mx/$k");
 if (is_file("$mx/_dep.png")) { to_jpg("$mx/_dep.png", "$mx/prova-6.jpg"); @unlink("$mx/_dep.png"); }
 $log[] = 'imagens: ' . implode(', ', $img);
 
