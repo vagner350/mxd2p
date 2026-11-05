@@ -52,7 +52,7 @@ foreach (scandir($DST) as $f) if (!in_array($f, ['.', '..', basename(__DIR__)], 
 $log[] = 'limpo';
 
 // 2. copia a base da loja (sem vídeos e conteúdo exclusivo da Amazolé)
-$skip = ['*.mp4', 'assets/produtos', 'assets/ativos', 'atacado', 'api/atacado.php', '3ae52b52bb28debbda9b0e359b836af1.txt', 'assets/guia-30-dias-amazole.pdf', 'api/appmax-config.php', 'appmax-config.php'];
+$skip = ['*.mp4', 'assets/produtos', 'assets/ativos', '3ae52b52bb28debbda9b0e359b836af1.txt', 'assets/guia-30-dias-amazole.pdf', 'api/appmax-config.php', 'appmax-config.php'];
 $log[] = 'copiados: ' . rcopy($SRC, $DST, $skip);
 
 // 3. ajustes pontuais
@@ -77,7 +77,8 @@ $map = [
   'location.hash = "produtos"' => 'location.hash = "kits"',
   '/assets/logo.webp' => '/assets/logo.png',
   'width="605" height="138"' => 'width="571" height="119"',
-  'loja.js?v=18' => 'loja.js?v=mx2', 'conteudo.js?v=12' => 'conteudo.js?v=mx2',
+  'loja.js?v=18' => 'loja.js?v=mx3', 'conteudo.js?v=12' => 'conteudo.js?v=mx3',
+  'guia-30-dias-amazole.pdf' => 'guia-30-dias-mxd20.pdf',
   'Amazol%C3%A9' => 'MXD20', 'AMAZOLÉ' => 'MXD20', 'Amazolé' => 'MXD20', 'amazole.store' => 'maxd20.com.br',
 ];
 $colors = [

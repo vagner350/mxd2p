@@ -15,13 +15,12 @@ return [
   ['assets/loja.js', 'str', 'const PIXEL_ID = "1768974181217383";', 'const PIXEL_ID = ""; /* coloque aqui o ID do Pixel da MXD20 */'],
   ['assets/loja.js', 'str', "fbq('init', PIXEL_ID);\nfbq('track', 'PageView');", "if (PIXEL_ID) { fbq('init', PIXEL_ID); fbq('track', 'PageView'); }"],
   ['assets/loja.js', 'str', 'function px(ev, data, opt){ try {', 'function px(ev, data, opt){ if (!PIXEL_ID) return; try {'],
-  ['assets/loja.js', 're', '/function bonusHTML\(p\)\{.*?\n\}\n/s', "function bonusHTML(p){ return \"\"; }\n"],
+  ['assets/loja.js', 'str', 'para clarear axilas e virilha + acompanhamento no WhatsApp', 'para barba, cabelo e sobrancelha + acompanhamento no WhatsApp'],
   ['assets/loja.js', 'str', "      <a href=\"/#produtos\" \${active===\"home\"?'aria-current=\"page\"':\"\"}>Produtos</a>\n      <a href=\"/?c=kits#produtos\">Kits</a>\n      <a href=\"/?c=esfoliantes#produtos\">Esfoliantes</a>\n",
     "      <a href=\"/produto/" . MX_SLUG . "/\" \${active===\"produto\"?'aria-current=\"page\"':\"\"}>Tônico MXD20</a>\n      <a href=\"/#kits\">Kits</a>\n"],
   ['assets/loja.js', 'str', '<a href="/#resultados">Resultados</a>' . "\n" . '      <a href="/pedido/"', '<a href="/#resultados">Resultados</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>' . "\n" . '      <a href="/pedido/"'],
   ['assets/loja.js', 'str', '<p>Cosméticos para clarear e cuidar da sua pele, com ativos inspirados na Amazônia.</p>', '<p>Tônico MXD20 Barbudom: a força da Amazônia para barba, cabelo e sobrancelhas mais fortes e preenchidos.</p>'],
   ['assets/loja.js', 'str', '<li><a href="${LOJA.instagram}" target="_blank" rel="noopener">Instagram @amazoleon</a></li>', ''],
-  ['assets/loja.js', 'str', '<li><a href="/atacado/"><b>Compre no atacado</b></a></li>', ''],
   ['assets/loja.js', 'str', 'function chrome(active){', "function chrome(active){\n  if (!document.querySelector('link[href*=\"mxd20.css\"]')) { const l = document.createElement(\"link\"); l.rel = \"stylesheet\"; l.href = \"/assets/mxd20.css?v=1\"; document.head.appendChild(l); }"],
   ['assets/loja.js', 'str', 'Olá! Tenho uma dúvida sobre os produtos Amazolé.', 'Olá! Tenho uma dúvida sobre o Tônico MXD20.'],
 
@@ -31,7 +30,7 @@ return [
 
   // ---------- api/_lib.php ----------
   ['api/_lib.php', 'str', "\$ch = cfg()['hostinger_channel'] ?? 'scha_01M50JEQZNPZS0ZZT4J0WGQ9GJ';", "\$ch = '" . MX_CHANNEL . "';"],
-  ['api/_lib.php', 're', "/\n\s*\. '<div style=\"border:2px dashed #14AEB8.*?<\/div>'/s", ''],
+  ['api/_lib.php', 'str', 'A rotina passo a passo para usar seus produtos do jeito certo', 'A rotina passo a passo para usar o Tônico MXD20 do jeito certo'],
   ['api/_lib.php', 'str', "const BRINDES = ['variant_01M5J97DPEKVZ0J6AK154YK8KB' => 'Sabonete em Pasta Clareador Amazolé 150g'];", 'const BRINDES = [];'],
   ['api/_lib.php', 're', '/const BUMPS = \[.*?\n\];/s', "const BUMPS = [\n  'esf' => ['sku' => 'BUMP-MXD20', 'name' => 'Tônico MXD20 Barbudom 30ml (oferta do checkout)', 'unit' => 6700],\n];"],
   ['api/_lib.php', 're', '/function bump_kind\(\$lines\) \{.*?\n\}/s', "function bump_kind(\$lines) { return 'esf'; }"],
@@ -55,7 +54,7 @@ return [
 
   // ---------- api/produto_page.php ----------
   ['api/produto_page.php', 'str', "str_contains(\$p['slug'], 'esfoliante')", "str_contains(\$p['slug'], 'mxd20')"],
-  ['api/produto_page.php', 're', "/\\\$bonus = preg_match\(.*?\n/", "\$bonus = '';\n"],
+  ['api/produto_page.php', 'str', 'para clarear axilas e virilha + acompanhamento no WhatsApp', 'para barba, cabelo e sobrancelha + acompanhamento no WhatsApp'],
   ['api/produto_page.php', 'str', "['Em quanto tempo vejo resultado?', 'Muitas clientes notam a pele mais lisa e uniforme nas primeiras semanas de uso contínuo. O tempo varia de pessoa para pessoa.'],",
     "['Em quanto tempo vejo resultado?', 'Com o uso contínuo, duas vezes ao dia, você nota fios mais resistentes e áreas mais preenchidas. O tempo varia de pessoa para pessoa.'],"],
 
@@ -71,14 +70,21 @@ return [
   ['checkout/index.html', 'str', '<span id="bumpTxt"><span class="t">Sim, quero +1 Esfoliante Clareador!</span><br><span class="d">Leve mais um pote de 200g de <s>R$ 97,00</s> por <b>R$ 57,00</b> e não interrompa o tratamento. Vai no mesmo pacote, com frete grátis.</span></span>', '<span id="bumpTxt"></span>'],
   ['checkout/index.html', 'str', 'let BUMP = 5700, bumpK = "esf"', 'let BUMP = 6700, bumpK = "esf"'],
   ['checkout/index.html', 'str', 'const BUMP_SKU = { esf: "BUMP-ESF200", sab: "BUMP-SAB150", ser: "BUMP-SER30" };', 'const BUMP_SKU = { esf: "BUMP-MXD20" };'],
-  ['checkout/index.html', 'str', '(baseLines.some(l => !/col[aá]geno/i.test(l.product.title)) ?', '(false ?'],
-  ['checkout/sucesso/index.html', 're', '/\n\s*<a class="bonus-dl".*?<\/a>/s', ''],
+  ['checkout/sucesso/index.html', 'str', 'A rotina passo a passo e o calendário para marcar.', 'A rotina do Tônico MXD20 passo a passo e o calendário para marcar.'],
   ['checkout/sucesso/index.html', 'str', '<h2>Leve o <em>Sérum Íntimo Clareador</em> por só R$ 47,00</h2>', '<h2>Leve <em>+1 Tônico MXD20</em> por só R$ 67,00</h2>'],
   ['checkout/sucesso/index.html', 're', '/<img src="https:\/\/cdn\.zyrosite\.com\/cdn-cgi\/image\/format=auto,w=300,fit=scale-down\/cdn-ecommerce\/store_01M50JEQYV1Q2NTETM2JVQSH4E\/assets\/88ec6cc7[^"]*" alt="[^"]*">/', '<img src="' . MX_IMG300 . '" alt="Tônico MXD20 Barbudom 30ml">'],
   ['checkout/sucesso/index.html', 'str', '<div><p>Completa o tratamento da virilha e região íntima: textura leve, absorve rápido e ajuda a uniformizar o tom.</p>', '<div><p>Garanta mais um frasco e não interrompa a rotina: barba, cabelo e sobrancelha com força total.</p>'],
   ['checkout/sucesso/index.html', 'str', '<p class="pr"><s>R$ 97,00</s> <b>R$ 47,00</b></p>', '<p class="pr"><s>R$ 137,00</s> <b>R$ 67,00</b></p>'],
   ['checkout/sucesso/index.html', 'str', '{value:47,currency:"BRL",content_ids:["UPS-SER30"]', '{value:67,currency:"BRL",content_ids:["UPS-MXD20"]'],
   ['checkout/sucesso/index.html', 'str', 'O Sérum Íntimo vai junto no seu pedido. Obrigado!', 'O frasco extra vai junto no seu pedido. Obrigado!'],
+
+  // ---------- atacado ----------
+  ['atacado/index.html', 'str', 'Tem loja, salão, clínica de estética, farmácia ou quer revender Amazolé?', 'Tem barbearia, salão, loja, farmácia ou quer revender o Tônico MXD20?'],
+  ['atacado/index.html', 'str', 'Revenda os produtos Amazolé: preços especiais por quantidade para lojas, salões, farmácias e revendedores.', 'Revenda o Tônico MXD20 Barbudom: preços especiais por quantidade para barbearias, salões, lojas, farmácias e revendedores.'],
+  ['atacado/index.html', 'str', '<option>Salão de beleza / estética</option>', '<option>Barbearia / salão</option>'],
+  ['atacado/index.html', 're', '/<fieldset><legend>Produtos de interesse<\/legend>.*?<\/fieldset>/s', '<fieldset><legend>Produtos de interesse</legend>\n    <label><input type="checkbox" name="p" value="Tônico MXD20 Barbudom 30ml" checked>Tônico MXD20 Barbudom 30ml</label>\n    <label><input type="checkbox" name="p" value="Display / material de ponto de venda">Display / material de ponto de venda</label>\n  </fieldset>'],
+  ['api/atacado.php', 'str', '<h2 style="color:#E2087D;margin:0 0 10px">Novo pedido de atacado / revenda</h2>', '<h2 style="color:#0B0B0B;margin:0 0 10px">Novo pedido de atacado / revenda · MXD20</h2>'],
+  ['api/atacado.php', 'str', "base64_encode('Atacado: '", "base64_encode('Atacado MXD20: '"],
 
   // ---------- .htaccess ----------
   ['.htaccess', 'str', "RewriteEngine On\n", "RewriteEngine On\nRewriteRule ^_deploy/(?!instalar\\.php$) - [F,L]\n"],

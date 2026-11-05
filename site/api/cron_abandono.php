@@ -88,7 +88,7 @@ if ($pendRows) notify_email('MXD20: Pix/boleto não pagos para recuperar', '<div
 // ---------- 3. acompanhamento no 7º e 21º dia após o pagamento ----------
 $FOLLOW = [
   7 => ['f7', 'Como está a sua primeira semana com o MXD20?', 'Uma semana de rotina, %s!',
-        '<p>Você está no começo, e é aqui que a constância faz diferença. Algumas dicas para esta fase:</p><ul style="padding-left:18px"><li>Aplique 2x ao dia, de manhã e à noite, sempre com a pele limpa e seca.</li><li>Massageie por 1 minuto para o tônico chegar à raiz. Não precisa enxaguar.</li><li>Tire hoje uma foto do "antes", com a mesma luz e o mesmo ângulo. Ela vai mostrar sua evolução.</li></ul>'],
+        '<p>Você está no começo, e é aqui que a constância faz diferença. Algumas dicas para esta fase:</p><ul style="padding-left:18px"><li>Aplique 2x ao dia, de manhã e à noite, sempre com a pele limpa e seca.</li><li>Massageie por 1 minuto para o tônico chegar à raiz. Não precisa enxaguar.</li><li>Tire hoje uma foto do "antes", com a mesma luz e o mesmo ângulo. Ela vai mostrar sua evolução.</li></ul><p><a href="https://maxd20.com.br/assets/guia-30-dias-mxd20.pdf" style="color:#0B0B0B;font-weight:bold">Rever o Guia MXD20 de 30 dias (PDF)</a></p>'],
   21 => ['f21', 'Três semanas de MXD20: hora de manter o ritmo', 'Três semanas de rotina, %s!',
         '<p>Agora é manter a constância, que é o que traz resultado.</p><ul style="padding-left:18px"><li>Compare a foto de hoje com a do começo.</li><li>Continue com 2 aplicações por dia, sem pular.</li><li>Seu frasco está acabando? Para não interromper a rotina, garanta o próximo na loja.</li></ul><p>Mande sua foto de antes e depois pra gente no WhatsApp. Adoramos ver a evolução!</p>'],
 ];
