@@ -8,6 +8,9 @@
 const KEY_HASH = '6539e2a47bd1c54374c4045f19aa83d791f70a7440f45caf2b46709a53967cf4';
 $CLI = PHP_SAPI === 'cli';
 if ($CLI) {
+  // trava: nunca roda duas instalações ao mesmo tempo (uma instalação leva mais de 1 minuto)
+  $LOCK = fopen(__DIR__ . '/.instalando.lock', 'c');
+  if (!$LOCK || !flock($LOCK, LOCK_EX | LOCK_NB)) exit(0);
   $rep = __DIR__ . '/report.json';
   $ver = @filemtime(__DIR__ . '/instalar.php') . '-' . @filemtime(__DIR__ . '/patches.php') . '-' . @md5_file(__DIR__ . '/site/index.html');
   if (is_file($rep) && (json_decode((string)file_get_contents($rep), true)['versao'] ?? '') === $ver && empty($argv[1])) exit(0);
