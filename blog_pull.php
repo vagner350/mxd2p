@@ -1,12 +1,9 @@
 <?php
 // Roda pela tarefa agendada da hospedagem a cada 10 min: puxa os posts novos do branch blog-posts.
-// php blog_pull.php        -> git pull
 // php blog_pull.php teste  -> também testa as páginas do blog e grava o resultado em _blog/teste.txt
 if (PHP_SAPI !== 'cli') { http_response_code(404); exit; }
 $dir = dirname(__DIR__) . '/_blog';
-$out = [];
-exec('cd ' . escapeshellarg($dir) . ' && git pull -q origin blog-posts 2>&1', $out, $rc);
-file_put_contents($dir . '/pull-log.txt', date('c') . " rc=$rc\n" . implode("\n", $out) . "\n");
+// (o git pull roda direto na tarefa agendada: cd domains/maxd20.com.br/public_html/_blog && git pull)
 if (($argv[1] ?? '') === 'teste') {
   $r = [];
   foreach (['/blog/', '/blog/barba-falhada-por-que-acontece-e-o-que-ajuda/', '/blog/feed.xml', '/sitemap.xml', '/checkout/', '/', '/promocao/', '/quiz/'] as $u) {
