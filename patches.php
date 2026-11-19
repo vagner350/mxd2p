@@ -87,6 +87,8 @@ return [
   // ---------- base nova da amazole.store (nov/2026) ----------
   ['assets/loja.js', 'str', '      <a href="/quiz/">Qual kit escolher?</a>' . "\n", '      <a href="/blog/" ${active==="blog"?\'aria-current="page"\':""}>Blog</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>' . "\n"],
   ['assets/loja.js', 'str', '<li><a href="/quiz/">Qual kit é ideal para mim?</a></li>', ''],
+  ['assets/loja.js', 'str', '\'<a class="vsel-quiz" href="/quiz/" data-track="Produto: fazer o quiz">Não sabe qual? Faça o quiz</a>\'', "''"],
+  ['api/produto_page.php', 'str', '\'<a class="vsel-quiz" href="/quiz/" data-track="Produto: fazer o quiz">Não sabe qual? Faça o quiz</a>\'', "''"],
   ['checkout/index.html', 're', '/<span id="bumpTxt">.*?<\/span><\/span>/s', '<span id="bumpTxt"></span>'],
   ['checkout/index.html', 're', '/<span class="pr" id="bumpPr">.*?<\/span>/s', '<span class="pr" id="bumpPr"></span>'],
   ['checkout/index.html', 'str', '<label class="bump" id="bump2Box">', '<label class="bump" id="bump2Box" hidden style="display:none">'],

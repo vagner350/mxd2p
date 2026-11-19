@@ -82,7 +82,7 @@ $map = [
   'loja.js?v=18' => 'loja.js?v=mx3', 'conteudo.js?v=12' => 'conteudo.js?v=mx3',
   'guia-30-dias-amazole.pdf' => 'guia-30-dias-mxd20.pdf',
   '<a href="/quiz/">Qual kit escolher?</a>' => '<a href="/blog/">Blog</a><a href="/#duvidas">Dúvidas</a>',
-  'Indique uma amiga' => 'Indique um amigo', 'para uma amiga' => 'para um amigo', 'Uma amiga comprou' => 'Um amigo comprou',
+  'Indique uma amiga' => 'Indique um amigo', 'indicar uma amiga' => 'indicar um amigo', 'para uma amiga' => 'para um amigo', 'Uma amiga comprou' => 'Um amigo comprou',
   'Ela ganha <b>10%' => 'Ele ganha <b>10%', 'ela ganha <b>10%' => 'ele ganha <b>10%', 'a amiga ganha' => 'o amigo ganha',
   'Obrigada pela indicação' => 'Obrigado pela indicação', 'fique satisfeita' => 'fique satisfeito', 'ficar satisfeita' => 'ficar satisfeito',
   'Amazol%C3%A9' => 'MXD20', 'AMAZOLÉ' => 'MXD20', 'Amazolé' => 'MXD20', 'amazole.store' => 'maxd20.com.br',
