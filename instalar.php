@@ -52,7 +52,9 @@ foreach (scandir($DST) as $f) if (!in_array($f, ['.', '..', basename(__DIR__), '
 $log[] = 'limpo';
 
 // 2. copia a base da loja (sem vídeos e conteúdo exclusivo da Amazolé)
-$skip = ['*.mp4', 'assets/produtos', 'assets/ativos', '3ae52b52bb28debbda9b0e359b836af1.txt', 'assets/guia-30-dias-amazole.pdf', 'api/appmax-config.php', 'appmax-config.php'];
+$skip = ['*.mp4', 'assets/produtos', 'assets/ativos', '3ae52b52bb28debbda9b0e359b836af1.txt', 'assets/guia-30-dias-amazole.pdf', 'api/appmax-config.php', 'appmax-config.php',
+  // conteúdo exclusivo da Amazolé (não vai para a MXD20)
+  'blog', '_tools', 'colageno', 'promocao', 'quiz', 'assets/quiz.js', 'api/promo_img.php', 'api/blog.json'];
 $log[] = 'copiados: ' . rcopy($SRC, $DST, $skip);
 
 // 3. ajustes pontuais
@@ -79,6 +81,10 @@ $map = [
   'width="605" height="138"' => 'width="571" height="119"',
   'loja.js?v=18' => 'loja.js?v=mx3', 'conteudo.js?v=12' => 'conteudo.js?v=mx3',
   'guia-30-dias-amazole.pdf' => 'guia-30-dias-mxd20.pdf',
+  '<a href="/quiz/">Qual kit escolher?</a>' => '<a href="/blog/">Blog</a><a href="/#duvidas">Dúvidas</a>',
+  'Indique uma amiga' => 'Indique um amigo', 'para uma amiga' => 'para um amigo', 'Uma amiga comprou' => 'Um amigo comprou',
+  'Ela ganha <b>10%' => 'Ele ganha <b>10%', 'ela ganha <b>10%' => 'ele ganha <b>10%', 'a amiga ganha' => 'o amigo ganha',
+  'Obrigada pela indicação' => 'Obrigado pela indicação', 'fique satisfeita' => 'fique satisfeito', 'ficar satisfeita' => 'ficar satisfeito',
   'Amazol%C3%A9' => 'MXD20', 'AMAZOLÉ' => 'MXD20', 'Amazolé' => 'MXD20', 'amazole.store' => 'maxd20.com.br',
 ];
 $colors = [

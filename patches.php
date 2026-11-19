@@ -18,7 +18,6 @@ return [
   ['assets/loja.js', 'str', 'para clarear axilas e virilha + acompanhamento no WhatsApp', 'para barba, cabelo e sobrancelha + acompanhamento no WhatsApp'],
   ['assets/loja.js', 'str', "      <a href=\"/#produtos\" \${active===\"home\"?'aria-current=\"page\"':\"\"}>Produtos</a>\n      <a href=\"/?c=kits#produtos\">Kits</a>\n      <a href=\"/?c=esfoliantes#produtos\">Esfoliantes</a>\n",
     "      <a href=\"/produto/" . MX_SLUG . "/\" \${active===\"produto\"?'aria-current=\"page\"':\"\"}>Tônico MXD20</a>\n      <a href=\"/#kits\">Kits</a>\n"],
-  ['assets/loja.js', 'str', '<a href="/#resultados">Resultados</a>' . "\n" . '      <a href="/pedido/"', '<a href="/#resultados">Resultados</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>' . "\n" . '      <a href="/pedido/"'],
   ['assets/loja.js', 'str', '<p>Cosméticos para clarear e cuidar da sua pele, com ativos inspirados na Amazônia.</p>', '<p>Tônico MXD20 Barbudom: a força da Amazônia para barba, cabelo e sobrancelhas mais fortes e preenchidos.</p>'],
   ['assets/loja.js', 'str', '<li><a href="${LOJA.instagram}" target="_blank" rel="noopener">Instagram @amazoleon</a></li>', ''],
   ['assets/loja.js', 'str', 'function chrome(active){', "function chrome(active){\n  if (!document.querySelector('link[href*=\"mxd20.css\"]')) { const l = document.createElement(\"link\"); l.rel = \"stylesheet\"; l.href = \"/assets/mxd20.css?v=1\"; document.head.appendChild(l); }"],
@@ -67,7 +66,6 @@ return [
   ['produto/index.html', 'str', 'Não testado em animais</div>', 'Ativos da Amazônia</div>'],
 
   // ---------- checkout ----------
-  ['checkout/index.html', 'str', '<span id="bumpTxt"><span class="t">Sim, quero +1 Esfoliante Clareador!</span><br><span class="d">Leve mais um pote de 200g de <s>R$ 97,00</s> por <b>R$ 57,00</b> e não interrompa o tratamento. Vai no mesmo pacote, com frete grátis.</span></span>', '<span id="bumpTxt"></span>'],
   ['checkout/index.html', 'str', 'let BUMP = 5700, bumpK = "esf"', 'let BUMP = 6700, bumpK = "esf"'],
   ['checkout/index.html', 'str', 'const BUMP_SKU = { esf: "BUMP-ESF200", sab: "BUMP-SAB150", ser: "BUMP-SER30" };', 'const BUMP_SKU = { esf: "BUMP-MXD20" };'],
   ['checkout/sucesso/index.html', 'str', 'A rotina passo a passo e o calendário para marcar.', 'A rotina do Tônico MXD20 passo a passo e o calendário para marcar.'],
@@ -86,11 +84,23 @@ return [
   ['api/atacado.php', 'str', '<h2 style="color:#E2087D;margin:0 0 10px">Novo pedido de atacado / revenda</h2>', '<h2 style="color:#0B0B0B;margin:0 0 10px">Novo pedido de atacado / revenda · MXD20</h2>'],
   ['api/atacado.php', 'str', "base64_encode('Atacado: '", "base64_encode('Atacado MXD20: '"],
 
+  // ---------- base nova da amazole.store (nov/2026) ----------
+  ['assets/loja.js', 'str', '      <a href="/quiz/">Qual kit escolher?</a>' . "\n", '      <a href="/blog/" ${active==="blog"?\'aria-current="page"\':""}>Blog</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>' . "\n"],
+  ['assets/loja.js', 'str', '<li><a href="/quiz/">Qual kit é ideal para mim?</a></li>', ''],
+  ['checkout/index.html', 're', '/<span id="bumpTxt">.*?<\/span><\/span>/s', '<span id="bumpTxt"></span>'],
+  ['checkout/index.html', 're', '/<span class="pr" id="bumpPr">.*?<\/span>/s', '<span class="pr" id="bumpPr"></span>'],
+  ['checkout/index.html', 'str', '<label class="bump" id="bump2Box">', '<label class="bump" id="bump2Box" hidden style="display:none">'],
+  ['checkout/sucesso/index.html', 'str', 'Amiga, comprei o clareador da MXD20! Usa meu link e ganha 10% de desconto na primeira compra: ', 'Comprei o Tônico MXD20 Barbudom! Usa meu link e ganha 10% de desconto na primeira compra: '],
+  ['politicas/trocas/index.html', 'str', '(o esfoliante duas vezes por semana)', '(o tônico 2 vezes ao dia)'],
+  ['creator/index.html', 're', '/const links = \[\["Página inicial", c\.link\].*?\]\];/', 'const links = [["Página inicial", c.link], ["Tônico MXD20", c.link + "/tonico-mxd20-barbudom-30ml"], ["Blog", c.link + "/blog"]];'],
+  ['painel/creators/index.html', 're', '/const links = \[\["Página inicial", c\.link\].*?\]\];/', 'const links = [["Página inicial", c.link], ["Tônico MXD20", c.link + "/tonico-mxd20-barbudom-30ml"], ["Blog", c.link + "/blog"]];'],
+  ['api/sitemap.php', 're', '/\nforeach \(\[\'\/promocao\/\'.*?\n/', "\n"],
+  ['api/sitemap.php', 're', '/\nforeach \(\(json_decode\(\(string\)@file_get_contents\(__DIR__ \. \'\/blog\.json\'\).*?\n/', "\n"],
+  ['api/sitemap.php', 'str', "[\$base . '/assets/kit-3.jpg']", "['" . MX_IMG1200 . "']"],
+
   // ---------- blog ----------
   ['.htaccess', 'str', "RewriteRule ^sitemap\\.xml$ api/sitemap.php [L]\n", "RewriteRule ^sitemap\\.xml$ api/sitemap.php [L]\n# blog\nRewriteRule ^_blog/ - [F,L]\nRewriteRule ^blog/?$ api/blog.php [L,QSA]\nRewriteRule ^blog/feed\\.xml$ api/blog.php?feed=1 [L]\nRewriteRule ^blog/([a-z0-9-]+)/?$ api/blog.php?slug=$1 [L,QSA]\n"],
   ['api/sitemap.php', 'str', "echo '</urlset>';", "\$u('/blog/', 'daily', '0.8');\nforeach (glob(dirname(__DIR__) . '/_blog/posts/*.json') ?: [] as \$bf) { \$bp = json_decode((string)file_get_contents(\$bf), true); if (!\$bp || empty(\$bp['slug']) || (strtotime(\$bp['publicar_em'] ?? '') ?: 0) > time()) continue; \$u('/blog/' . preg_replace('/[^a-z0-9-]/', '', \$bp['slug']) . '/', 'monthly', '0.6'); }\necho '</urlset>';"],
-  ['assets/loja.js', 'str', '<a href="/#resultados">Resultados</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>', '<a href="/blog/" ${active==="blog"?\'aria-current="page"\':""}>Blog</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>'],
-  ['assets/loja.js', 'str', '<li><a href="/pedido/">Acompanhar pedido</a></li>', '<li><a href="/pedido/">Acompanhar pedido</a></li><li><a href="/blog/">Blog MXD20</a></li>'],
 
   // ---------- .htaccess ----------
   ['.htaccess', 'str', "RewriteEngine On\n", "RewriteEngine On\nRewriteRule ^_deploy/(?!instalar\\.php$) - [F,L]\n"],
