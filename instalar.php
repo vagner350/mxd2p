@@ -48,7 +48,7 @@ function rfiles($d, $rel = '') { $o = []; foreach (scandir($d) as $f) { if ($f =
 
 // 1. limpa o public_html (menos a pasta deste instalador)
 if (!is_dir($SRC)) { http_response_code(500); echo json_encode(['error' => 'origem_nao_encontrada', 'src' => $SRC]); exit; }
-foreach (scandir($DST) as $f) if (!in_array($f, ['.', '..', basename(__DIR__)], true)) rrm("$DST/$f");
+foreach (scandir($DST) as $f) if (!in_array($f, ['.', '..', basename(__DIR__), '_blog'], true)) rrm("$DST/$f");
 $log[] = 'limpo';
 
 // 2. copia a base da loja (sem vídeos e conteúdo exclusivo da Amazolé)
@@ -91,7 +91,7 @@ $colors = [
 $textExt = ['html', 'php', 'js', 'css', 'json', 'webmanifest', 'txt', 'htaccess', 'xml', 'svg'];
 $changed = 0;
 foreach (rfiles($DST) as $r) {
-  if (str_starts_with($r, basename(__DIR__) . '/')) continue;
+  if (str_starts_with($r, basename(__DIR__) . '/') || str_starts_with($r, '_blog/')) continue;
   $ext = strtolower(pathinfo($r, PATHINFO_EXTENSION) ?: ltrim(basename($r), '.'));
   if (!in_array($ext, $textExt, true)) continue;
   $p = "$DST/$r"; $t = file_get_contents($p); $o = $t;
@@ -166,7 +166,7 @@ else $log[] = 'appmax-config: ja existe';
 $words = ['clare', 'esfolia', 'manchas', 'axila', 'virilha', 'sérum', 'colágeno', 'melasma', 'sabonete', 'sozinha', 'amazole', 'Amazol'];
 $left = [];
 foreach (rfiles($DST) as $r) {
-  if (str_starts_with($r, basename(__DIR__) . '/') || !preg_match('/\.(html|php|js|json)$/', $r)) continue;
+  if (str_starts_with($r, basename(__DIR__) . '/') || str_starts_with($r, '_blog/') || !preg_match('/\.(html|php|js|json)$/', $r)) continue;
   foreach (file("$DST/$r") as $ln => $line) foreach ($words as $w) if (stripos($line, $w) !== false) { $left[$r][] = ($ln + 1) . ': ' . mb_substr(trim($line), 0, 160); break; }
 }
 foreach ($left as $k => $v) $left[$k] = array_slice($v, 0, 12);

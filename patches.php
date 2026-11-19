@@ -86,6 +86,12 @@ return [
   ['api/atacado.php', 'str', '<h2 style="color:#E2087D;margin:0 0 10px">Novo pedido de atacado / revenda</h2>', '<h2 style="color:#0B0B0B;margin:0 0 10px">Novo pedido de atacado / revenda · MXD20</h2>'],
   ['api/atacado.php', 'str', "base64_encode('Atacado: '", "base64_encode('Atacado MXD20: '"],
 
+  // ---------- blog ----------
+  ['.htaccess', 'str', "RewriteRule ^sitemap\\.xml$ api/sitemap.php [L]\n", "RewriteRule ^sitemap\\.xml$ api/sitemap.php [L]\n# blog\nRewriteRule ^_blog/ - [F,L]\nRewriteRule ^blog/?$ api/blog.php [L,QSA]\nRewriteRule ^blog/feed\\.xml$ api/blog.php?feed=1 [L]\nRewriteRule ^blog/([a-z0-9-]+)/?$ api/blog.php?slug=$1 [L,QSA]\n"],
+  ['api/sitemap.php', 'str', "echo '</urlset>';", "\$u('/blog/', 'daily', '0.8');\nforeach (glob(dirname(__DIR__) . '/_blog/posts/*.json') ?: [] as \$bf) { \$bp = json_decode((string)file_get_contents(\$bf), true); if (!\$bp || empty(\$bp['slug']) || (strtotime(\$bp['publicar_em'] ?? '') ?: 0) > time()) continue; \$u('/blog/' . preg_replace('/[^a-z0-9-]/', '', \$bp['slug']) . '/', 'monthly', '0.6'); }\necho '</urlset>';"],
+  ['assets/loja.js', 'str', '<a href="/#resultados">Resultados</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>', '<a href="/blog/" ${active==="blog"?\'aria-current="page"\':""}>Blog</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>'],
+  ['assets/loja.js', 'str', '<li><a href="/pedido/">Acompanhar pedido</a></li>', '<li><a href="/pedido/">Acompanhar pedido</a></li><li><a href="/blog/">Blog MXD20</a></li>'],
+
   // ---------- .htaccess ----------
   ['.htaccess', 'str', "RewriteEngine On\n", "RewriteEngine On\nRewriteRule ^_deploy/(?!instalar\\.php$) - [F,L]\n"],
 ];
