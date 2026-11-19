@@ -1,6 +1,6 @@
 # Guia do Blog MXD20 (maxd20.com.br/blog/)
 
-Este branch (`blog-posts`) guarda os posts do blog. Cada arquivo em `posts/` vira um post no site quando chega o horário de `publicar_em`. O servidor puxa este branch a cada 10 minutos.
+Este branch (`blog-posts`) guarda os posts do blog. Cada arquivo em `posts/` vira um post no site quando chega o horário de `publicar_em`. O servidor baixa este branch a cada 10 minutos (script blog_sync.php).
 
 ## Pauta (temas.json)
 `temas.json` tem a pauta com 129 temas, em ordem. A cada dia, use os **3 próximos temas com `"usado": false`**, na ordem do campo `n`: o 1º às 08:00, o 2º às 13:00 e o 3º às 19:00. Use o `titulo`, o `slug` e a `categoria` do tema (pode ajustar o título só para corrigir algo) e escreva pensando na `palavra_chave`. Depois de escrever, marque esses 3 temas com `"usado": true` e salve o `temas.json` no mesmo commit. Se a pauta acabar, crie 3 temas novos que não repitam nenhum já usado.
