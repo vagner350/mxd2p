@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0B0B0B">
+<link rel="preload" href="/assets/fonts/montserrat-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/loja.css?v=20">
+<link rel="stylesheet" href="/assets/mxd20.css?v=mx4">
+<link rel="preconnect" href="https://api-ecommerce.hostinger.com">
+<title>Teste da barba: qual kit MXD20 é ideal para você? | MXD20</title>
+<meta name="description" content="Responda 5 perguntas rápidas sobre barba, cabelo ou sobrancelha e descubra qual kit do Tônico MXD20 combina com a sua rotina. Leva menos de 1 minuto.">
+<link rel="canonical" href="https://maxd20.com.br/teste/">
+<meta property="og:title" content="Teste da barba: qual kit MXD20 é ideal para você?">
+<meta property="og:description" content="5 perguntas rápidas para descobrir o kit certo para a sua rotina.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://maxd20.com.br/teste/"><meta property="og:site_name" content="MXD20"><meta property="og:locale" content="pt_BR">
+<style>
+.qz{max-width:680px;margin:0 auto;padding-block:34px 60px}
+.qz-top{display:grid;justify-items:center;gap:10px;text-align:center;margin-bottom:22px}
+.qz-top .brush{font-size:clamp(26px,4.4vw,42px)}
+.qz-top p{color:var(--muted);font-size:16.5px;max-width:520px}
+.qz-bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:18px}
+.qz-bar i{display:block;height:100%;width:0;background:var(--yel);transition:width .3s}
+.qz-card{background:#fff;border:2px solid var(--line);border-radius:20px;padding:22px}
+.qz-step{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.qz-card h2{font-family:var(--display);font-weight:900;font-size:clamp(20px,3vw,26px);margin:6px 0 16px;line-height:1.2}
+.qz-opts{display:grid;gap:10px}
+.qz-opts button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:12px;align-items:center;border:2px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:700;background:#fff;transition:border-color .15s,background .15s}
+.qz-opts button:hover,.qz-opts button:focus-visible{border-color:var(--yel);background:#FFFBEA}
+.qz-opts button:focus-visible{outline:3px solid var(--blk);outline-offset:2px}
+.qz-opts .e{font-size:22px;flex:none;width:30px;text-align:center}
+.qz-back{all:unset;cursor:pointer;margin-top:14px;font-weight:700;color:var(--muted);text-decoration:underline}
+.qz-res h2 em{color:var(--blk);background:linear-gradient(transparent 58%,var(--yel) 58%)}
+.qz-res ul{display:grid;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.qz-res li{display:flex;gap:10px;align-items:flex-start}
+.qz-res li::before{content:"✓";font-weight:900;color:var(--blk);background:var(--yel);border-radius:50%;width:22px;height:22px;flex:none;display:grid;place-items:center;font-size:13px}
+.qz-kit{display:flex;gap:16px;align-items:center;background:#FFF8DC;border-radius:16px;padding:14px;margin-bottom:14px}
+.qz-kit img{width:96px;height:96px;object-fit:contain;flex:none}
+.qz-kit b{font-family:var(--display);font-weight:900;font-size:20px;display:block}
+.qz-kit .pr{display:block;font-family:var(--display);font-weight:900;font-size:24px}
+.qz-kit s{color:var(--muted);font-weight:700;margin-right:6px}
+.qz-kit small{display:block;color:var(--muted);font-weight:700}
+.qz-btns{display:grid;gap:10px}
+.qz-alert{background:#FFF4CC;border-left:4px solid var(--blk);border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:14.5px}
+.qz-tip{color:var(--muted);font-size:14.5px;margin-bottom:14px}
+.qz-cup{margin-top:18px;border:2px dashed var(--yel);border-radius:16px;padding:16px;display:grid;gap:10px}
+.qz-cup form{display:grid;gap:8px;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto}
+.qz-cup input{border:2px solid var(--line);border-radius:12px;padding:12px;font:inherit;min-width:0}
+.qz-cup .code{font-family:var(--display);font-weight:900;font-size:22px;letter-spacing:2px;background:#FFF8DC;border-radius:10px;padding:8px 14px;justify-self:start}
+@media (max-width:600px){.qz-cup form{grid-template-columns:minmax(0,1fr)}.qz-kit img{width:72px;height:72px}}
+</style>
+</head>
+<body>
+<main>
+  <div class="wrap qz">
+    <div class="qz-top"><span class="brush tilt">Teste da barba</span><p>5 perguntas rápidas para descobrir qual kit do Tônico MXD20 combina com você. Vale para barba, cabelo e sobrancelha.</p></div>
+    <div class="qz-bar" aria-hidden="true"><i id="qzBar"></i></div>
+    <div class="qz-card" id="qz" aria-live="polite"></div>
+    <p class="note" style="margin-top:14px">O teste ajuda a escolher o kit e não substitui a avaliação de um dermatologista. Resultados variam de pessoa para pessoa.</p>
+  </div>
+</main>
+<script src="/assets/loja.js?v=mx4"></script>
+<script>
+chrome("doc");
+try { localStorage.setItem("amz_popup", "1"); } catch (_) {}
+const KITS = {
+  1: { v: "variant_01M61B3PBC8Z6CVFVBNQT3PMJN", nome: "1 frasco", img: "https://cdn.zyrosite.com/cdn-cgi/image/format=auto,w=240,fit=scale-down/cdn-ecommerce/store_01M61B38SQHHHJ5MY4E72HDENH/assets/684bcd3a-b7f0-482f-b8bd-57ada4398a11.png", dura: "cerca de 1 mês de rotina em uma área" },
+  2: { v: "variant_01M61B3YQW24CARYHBTMZD467B", nome: "Kit 2 frascos", img: "/assets/mxd/kit-2.png", dura: "cerca de 2 meses de rotina em uma área" },
+  3: { v: "variant_01M61B3YX7JVSPZC8CTQB5NNHC", nome: "Kit 3 frascos", img: "/assets/mxd/kit-3.png", dura: "cerca de 3 meses de rotina em uma área e vem com um pente de barba de brinde" }
+};
+const Q = [
+  { k: "area", t: "Onde você quer mais resultado?", o: [["barba", "🧔", "Barba"], ["cabelo", "💇‍♂️", "Cabelo"], ["sobrancelha", "👁️", "Sobrancelha"], ["varias", "✨", "Em mais de uma área"]] },
+  { k: "sit", t: "Como está hoje?", o: [["leve", "🔹", "Algumas falhas pequenas"], ["varias", "🔸", "Falhas em várias partes ou fios ralos"], ["finos", "〰️", "Fios finos e fracos"], ["brusca", "⚠️", "Queda que começou de repente ou falhas redondas"]] },
+  { k: "tempo", t: "Há quanto tempo isso te incomoda?", o: [["curto", "📅", "Menos de 6 meses"], ["medio", "🗓️", "De 6 meses a 2 anos"], ["longo", "⏳", "Mais de 2 anos"]] },
+  { k: "rot", t: "Você consegue aplicar 2 vezes ao dia?", o: [["sim", "💪", "Sim, todos os dias"], ["quase", "👍", "Na maioria dos dias"], ["dificil", "😅", "Vou ter dificuldade"]] },
+  { k: "antes", t: "Já usou algum produto para isso?", o: [["nunca", "🆕", "Nunca usei"], ["parei", "⏸️", "Já usei e parei"], ["uso", "🔁", "Uso algo hoje"]] }
+];
+const R = {}; let step = 0;
+const box = document.getElementById("qz"), bar = document.getElementById("qzBar");
+function render() {
+  bar.style.width = (step / Q.length * 100) + "%";
+  if (step >= Q.length) return result();
+  const q = Q[step];
+  box.innerHTML = `<span class="qz-step">Pergunta ${step + 1} de ${Q.length}</span><h2>${esc(q.t)}</h2><div class="qz-opts">${q.o.map(([v, e, l]) => `<button type="button" data-v="${v}"><span class="e" aria-hidden="true">${e}</span>${esc(l)}</button>`).join("")}</div>${step ? '<button class="qz-back" type="button" id="qzBack">Voltar</button>' : ""}`;
+  box.querySelectorAll(".qz-opts button").forEach(b => b.onclick = () => { R[q.k] = b.dataset.v; if (step === 0) AMZ_T.send("clk", "Teste: começou"); step++; render(); box.querySelector("button")?.focus(); });
+  const bk = document.getElementById("qzBack"); if (bk) bk.onclick = () => { step--; render(); };
+}
+function kitFor() {
+  if (R.area === "varias") return 3;                       // mais de uma área: o frasco acaba mais rápido
+  if (R.sit === "varias" || R.sit === "brusca" || R.tempo === "longo") return 3;
+  if (R.sit === "finos" || R.tempo === "medio" || R.antes === "parei") return 2;
+  return 1;
+}
+async function result() {
+  const n = kitFor(), k = KITS[n];
+  const area = { barba: "na barba", cabelo: "no cabelo", sobrancelha: "na sobrancelha", varias: "em mais de uma área" }[R.area];
+  const why = [];
+  if (R.area === "varias") why.push("Usando em mais de uma área, cada frasco rende menos: o kit evita que a rotina pare no meio.");
+  if (R.sit === "varias" || R.tempo === "longo") why.push("Quando as falhas são maiores ou antigas, vale ter rotina sem pausa para comparar com a foto do dia 1 nos meses 2 e 3.");
+  if (R.sit === "finos") why.push("Para fios finos e fracos, o que mais conta é a constância: 2 meses de rotina já dão uma boa base de comparação.");
+  if (R.antes === "parei") why.push("Muita gente para antes da hora. Com mais frascos em casa, fica mais fácil manter o hábito.");
+  if (n === 1) why.push("Para quem quer começar e sentir a rotina, 1 frasco rende cerca de 1 mês em uma área.");
+  why.push(`Rende ${k.dura}.`);
+  const derm = R.sit === "brusca" ? '<div class="qz-alert"><b>Atenção:</b> queda que começou de repente ou falhas redondas podem ter outras causas. O ideal é passar por um dermatologista antes ou junto da rotina.</div>' : "";
+  const tip = R.rot === "dificil" ? '<p class="qz-tip"><b>Dica:</b> deixe o frasco ao lado da escova de dente e aplique logo depois de escovar, de manhã e à noite. O Guia de 30 dias tem um calendário para marcar.</p>' : "";
+  box.innerHTML = `<div class="qz-res"><span class="qz-step">Seu resultado</span><h2>Para cuidar ${area}, o ideal é o <em>${esc(k.nome)}</em></h2>${derm}<ul>${why.map(w => `<li>${esc(w)}</li>`).join("")}</ul>
+    <div class="qz-kit"><img src="${k.img}" alt="${esc(k.nome)} do Tônico MXD20" width="96" height="96" onerror="this.src='${KITS[1].img}'"><div><b>${esc(k.nome)}</b><span class="pr" id="qzPr"></span><small>Frete grátis · Pix ou até 12x · Guia de 30 dias</small></div></div>
+    ${tip}<div class="qz-btns"><button class="btn btn-pink" id="qzBuy" type="button">Quero o ${esc(k.nome)}</button><a class="btn btn-line" href="/#kits">Ver todos os kits</a><button class="qz-back" type="button" id="qzRe">Refazer o teste</button></div>
+    <div class="qz-cup" id="qzCup"><b>Ganhe 10% OFF na primeira compra</b><span class="note" style="text-align:left">Deixe seu WhatsApp e receba o cupom. Ele já fica aplicado no checkout.</span>
+      <form id="qzF" novalidate><input id="qzN" placeholder="Seu primeiro nome" autocomplete="given-name" aria-label="Seu primeiro nome"><input id="qzP" placeholder="WhatsApp com DDD" inputmode="tel" autocomplete="tel" aria-label="WhatsApp com DDD"><button class="btn btn-ink" type="submit">Quero o cupom</button></form><p class="alert" id="qzE" hidden></p></div></div>`;
+  AMZ_T.send("clk", "Teste: resultado " + k.nome);
+  document.getElementById("qzBuy").onclick = () => { AMZ_T.send("clk", "Teste: comprar " + k.nome); Cart.add(k.v, 1); checkout(); };
+  document.getElementById("qzRe").onclick = () => { step = 0; render(); };
+  document.getElementById("qzF").onsubmit = async e => {
+    e.preventDefault(); const er = document.getElementById("qzE"); er.hidden = true;
+    const ph = document.getElementById("qzP").value.replace(/\D/g, "");
+    if (ph.length < 10) { er.textContent = "Informe seu WhatsApp com DDD."; er.hidden = false; return; }
+    try {
+      const r = await fetch("/api/inscrever.php", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: document.getElementById("qzN").value, phone: ph, origem: "teste-da-barba" }) });
+      const j = await r.json(); if (!r.ok) throw new Error(j.error || "erro");
+      try { localStorage.setItem("amz_cupom", j.code); } catch (_) {}
+      document.getElementById("qzCup").innerHTML = `<b>Seu cupom:</b><span class="code">${esc(j.code)}</span><span class="note" style="text-align:left">Ele já fica aplicado no checkout. Vale na primeira compra.</span>`;
+    } catch (err) { er.textContent = err.message && err.message !== "erro" ? err.message : "Não foi possível agora. Tente de novo."; er.hidden = false; }
+  };
+  try {
+    const all = await getCatalog(); const hit = findVariant(all, k.v);
+    if (hit) { const { now, old, cur } = priceOf(hit.product, hit.variant); document.getElementById("qzPr").innerHTML = (old ? `<s>${money(old, cur)}</s>` : "") + money(now, cur); }
+  } catch (_) {}
+}
+render();
+</script>
+</body>
+</html>

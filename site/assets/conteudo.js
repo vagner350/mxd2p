@@ -27,7 +27,8 @@ const CONTEUDO = {
     faq: [
       ["Posso usar na barba, no cabelo e na sobrancelha?", "Sim. Aplique algumas gotas na área desejada, com a pele limpa e seca, e massageie por 1 minuto."],
       ["Quanto dura um frasco?", "O frasco tem 30ml. Usando algumas gotas duas vezes ao dia, rende cerca de um mês, dependendo da área."],
-      ["Qual kit escolher?", "1 frasco para começar, 2 frascos (R$ 197) para seguir a rotina por mais tempo, ou 3 frascos (R$ 237) para o tratamento completo com o menor preço por frasco."],
+      ["Qual kit escolher?", "1 frasco para começar, 2 frascos (R$ 197) para seguir a rotina por mais tempo, ou 3 frascos (R$ 237) para o tratamento completo com o menor preço por frasco. Na dúvida, faça o teste da barba em maxd20.com.br/teste."],
+      ["O kit de 3 frascos tem brinde?", "Sim. O kit de 3 frascos leva um pente de barba de brinde, enviado no mesmo pacote, enquanto durar o estoque."],
       ["Arde ou irrita?", "A fórmula é suave, mas cada pele reage de um jeito: faça um teste em uma pequena área antes e não aplique sobre pele ferida ou irritada."]
     ]
   }

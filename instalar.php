@@ -107,6 +107,8 @@ foreach (rfiles($DST) as $r) {
   $t = strtr($t, $map);
   $t = str_ireplace(array_keys($colors), array_values($colors), $t);
   if ($ext === 'html' && !str_contains($t, 'mxd20.css')) $t = preg_replace('#(<link rel="stylesheet" href="/assets/loja\.css\?v=\d+">)#', "$1\n<link rel=\"stylesheet\" href=\"/assets/mxd20.css?v=1\">", $t, 1);
+  // versão dos arquivos próprios: força o navegador a baixar o JS e o CSS novos (cache de 30 dias)
+  $t = preg_replace(['#loja\.js\?v=[A-Za-z0-9]+#', '#conteudo\.js\?v=[A-Za-z0-9]+#', '#mxd20\.css\?v=[A-Za-z0-9]+#'], ['loja.js?v=' . MX_VER, 'conteudo.js?v=' . MX_VER, 'mxd20.css?v=' . MX_VER], $t);
   if ($t !== $o) { file_put_contents($p, $t); $changed++; }
 }
 $log[] = "arquivos de texto ajustados: $changed";

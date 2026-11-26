@@ -6,10 +6,15 @@ const MX_IMG300 = 'https://cdn.zyrosite.com/cdn-cgi/image/format=auto,w=300,fit=
 const MX_IMG1200 = 'https://cdn.zyrosite.com/cdn-cgi/image/format=auto,w=1200,fit=scale-down/cdn-ecommerce/store_01M61B38SQHHHJ5MY4E72HDENH/assets/684bcd3a-b7f0-482f-b8bd-57ada4398a11.png';
 const MX_CHANNEL = 'scha_01M61B38TG9Y250JW4V4PNZEK1';
 const MX_SLUG = 'tonico-mxd20-barbudom-30ml';
+const MX_VER = 'mx4';   // suba a cada mudança no loja.js, conteudo.js ou mxd20.css
+const MX_BRINDE_V = 'variant_01M61B3YX7JVSPZC8CTQB5NNHC';   // kit 3 frascos
+const MX_BRINDE = 'Pente de barba MXD20';
+const MX_TESTE_LINK = "'<a class=\"vsel-quiz\" href=\"/teste/\" data-track=\"Produto: fazer o teste\">Não sabe qual? Faça o teste</a>'";
+const MX_WA_FAQ = '<div class="wa-faq"><div><b>Ainda com dúvida?</b><p>Fale com a gente no WhatsApp ou entre na lista de ofertas.</p></div><div class="btns"><a class="btn btn-pink" href="https://wa.me/5592985647581?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20T%C3%B4nico%20MXD20." target="_blank" rel="noopener" data-track="FAQ: WhatsApp dúvida">Tirar dúvida no WhatsApp</a><a class="btn btn-line" href="https://wa.me/5592985647581?text=Ol%C3%A1!%20Quero%20entrar%20na%20lista%20de%20ofertas%20da%20MXD20." target="_blank" rel="noopener" data-track="FAQ: lista de ofertas">Entrar na lista de ofertas</a></div></div>';
 
 return [
   // ---------- assets/loja.js ----------
-  ['assets/loja.js', 'str', 'const BRINDES = { "variant_01M5J97DPEKVZ0J6AK154YK8KB": "Sabonete em Pasta Clareador 150g" };', 'const BRINDES = {};'],
+  ['assets/loja.js', 'str', 'const BRINDES = { "variant_01M5J97DPEKVZ0J6AK154YK8KB": "Sabonete em Pasta Clareador 150g" };', 'const BRINDES = { "' . MX_BRINDE_V . '": "' . MX_BRINDE . '" };'],
   ['assets/loja.js', 're', '/const BUMPS = \{.*?\n\};\nfunction bumpKind\(lines\)\{.*?\n\}\n/s',
     "const BUMPS = {\n  esf: { price: 6700, from: 13700, slug: \"" . MX_SLUG . "\", short: \"+1 Tônico MXD20 30ml\",\n         title: \"Sim, quero +1 Tônico MXD20!\", text: \"Leve mais um frasco de 30ml e não interrompa a sua rotina.\" }\n};\nfunction bumpKind(lines){ return \"esf\"; }\n"],
   ['assets/loja.js', 'str', 'const PIXEL_ID = "1768974181217383";', 'const PIXEL_ID = ""; /* coloque aqui o ID do Pixel da MXD20 */'],
@@ -30,7 +35,7 @@ return [
   // ---------- api/_lib.php ----------
   ['api/_lib.php', 'str', "\$ch = cfg()['hostinger_channel'] ?? 'scha_01M50JEQZNPZS0ZZT4J0WGQ9GJ';", "\$ch = '" . MX_CHANNEL . "';"],
   ['api/_lib.php', 'str', 'A rotina passo a passo para usar seus produtos do jeito certo', 'A rotina passo a passo para usar o Tônico MXD20 do jeito certo'],
-  ['api/_lib.php', 'str', "const BRINDES = ['variant_01M5J97DPEKVZ0J6AK154YK8KB' => 'Sabonete em Pasta Clareador Amazolé 150g'];", 'const BRINDES = [];'],
+  ['api/_lib.php', 'str', "const BRINDES = ['variant_01M5J97DPEKVZ0J6AK154YK8KB' => 'Sabonete em Pasta Clareador Amazolé 150g'];", "const BRINDES = ['" . MX_BRINDE_V . "' => '" . MX_BRINDE . "'];"],
   ['api/_lib.php', 're', '/const BUMPS = \[.*?\n\];/s', "const BUMPS = [\n  'esf' => ['sku' => 'BUMP-MXD20', 'name' => 'Tônico MXD20 Barbudom 30ml (oferta do checkout)', 'unit' => 6700],\n];"],
   ['api/_lib.php', 're', '/function bump_kind\(\$lines\) \{.*?\n\}/s', "function bump_kind(\$lines) { return 'esf'; }"],
   ['api/_lib.php', 'str', '<h2 style="color:#E2087D;margin:0 0 8px">', '<h2 style="color:#0B0B0B;margin:0 0 8px">'],
@@ -41,7 +46,7 @@ return [
   ['api/_lib.php', 'str', "elseif (\$sku === 'UPS-SER30') \$out[] = \$ser;", "elseif (\$sku === 'UPS-MXD20') \$out[] = \$ser;"],
 
   // ---------- api/_lib_noout.php ----------
-  ['api/_lib_noout.php', 'str', "if (!defined('BRINDES_SITE')) define('BRINDES_SITE', ['variant_01M5J97DPEKVZ0J6AK154YK8KB' => 'Sabonete em Pasta Clareador 150g']);", "if (!defined('BRINDES_SITE')) define('BRINDES_SITE', []);"],
+  ['api/_lib_noout.php', 'str', "if (!defined('BRINDES_SITE')) define('BRINDES_SITE', ['variant_01M5J97DPEKVZ0J6AK154YK8KB' => 'Sabonete em Pasta Clareador 150g']);", "if (!defined('BRINDES_SITE')) define('BRINDES_SITE', ['" . MX_BRINDE_V . "' => '" . MX_BRINDE . "']);"],
   ['api/_lib_noout.php', 'str', "'image' => 'https://amazole.store/assets/kit-3.jpg',", "'image' => '" . MX_IMG1200 . "',"],
   ['api/_lib_noout.php', 'str', "'description' => 'Loja oficial Amazolé: cosméticos clareadores para axilas, virilha, melasma e manchas. Produzido na Amazônia.',", "'description' => 'Loja oficial MXD20: Tônico Barbudom para barba, cabelo e sobrancelhas, com ativos da Amazônia.',"],
   ['api/_lib_noout.php', 'str', "    'sameAs' => ['https://www.instagram.com/amazoleon/'],\n", ''],
@@ -86,9 +91,9 @@ return [
 
   // ---------- base nova da amazole.store (nov/2026) ----------
   ['assets/loja.js', 'str', '      <a href="/quiz/">Qual kit escolher?</a>' . "\n", '      <a href="/blog/" ${active==="blog"?\'aria-current="page"\':""}>Blog</a>' . "\n" . '      <a href="/#duvidas">Dúvidas</a>' . "\n"],
-  ['assets/loja.js', 'str', '<li><a href="/quiz/">Qual kit é ideal para mim?</a></li>', ''],
-  ['assets/loja.js', 'str', '\'<a class="vsel-quiz" href="/quiz/" data-track="Produto: fazer o quiz">Não sabe qual? Faça o quiz</a>\'', "''"],
-  ['api/produto_page.php', 'str', '\'<a class="vsel-quiz" href="/quiz/" data-track="Produto: fazer o quiz">Não sabe qual? Faça o quiz</a>\'', "''"],
+  ['assets/loja.js', 'str', '<li><a href="/quiz/">Qual kit é ideal para mim?</a></li>', '<li><a href="/teste/">Teste: qual kit é ideal para mim?</a></li>'],
+  ['assets/loja.js', 'str', '\'<a class="vsel-quiz" href="/quiz/" data-track="Produto: fazer o quiz">Não sabe qual? Faça o quiz</a>\'', MX_TESTE_LINK],
+  ['api/produto_page.php', 'str', '\'<a class="vsel-quiz" href="/quiz/" data-track="Produto: fazer o quiz">Não sabe qual? Faça o quiz</a>\'', MX_TESTE_LINK],
   ['checkout/index.html', 're', '/<span id="bumpTxt">.*?<\/span><\/span>/s', '<span id="bumpTxt"></span>'],
   ['checkout/index.html', 're', '/<span class="pr" id="bumpPr">.*?<\/span>/s', '<span class="pr" id="bumpPr"></span>'],
   ['checkout/index.html', 'str', '<label class="bump" id="bump2Box">', '<label class="bump" id="bump2Box" hidden style="display:none">'],
@@ -103,7 +108,26 @@ return [
 
   // ---------- blog ----------
   ['.htaccess', 'str', "RewriteRule ^sitemap\\.xml$ api/sitemap.php [L]\n", "RewriteRule ^sitemap\\.xml$ api/sitemap.php [L]\n# blog\nRewriteRule ^_blog/ - [F,L]\nRewriteRule ^blog/?$ api/blog.php [L,QSA]\nRewriteRule ^blog/feed\\.xml$ api/blog.php?feed=1 [L]\nRewriteRule ^blog/([a-z0-9-]+)/?$ api/blog.php?slug=$1 [L,QSA]\n"],
-  ['api/sitemap.php', 'str', "echo '</urlset>';", "\$u('/blog/', 'daily', '0.8');\nforeach (glob(dirname(__DIR__) . '/_blog/posts/*.json') ?: [] as \$bf) { \$bp = json_decode((string)file_get_contents(\$bf), true); if (!\$bp || empty(\$bp['slug']) || (strtotime(\$bp['publicar_em'] ?? '') ?: 0) > time()) continue; \$u('/blog/' . preg_replace('/[^a-z0-9-]/', '', \$bp['slug']) . '/', 'monthly', '0.6'); }\necho '</urlset>';"],
+  ['api/sitemap.php', 'str', "echo '</urlset>';", "\$u('/blog/', 'daily', '0.8');\n\$u('/teste/', 'monthly', '0.5');\nforeach (glob(dirname(__DIR__) . '/_blog/posts/*.json') ?: [] as \$bf) { \$bp = json_decode((string)file_get_contents(\$bf), true); if (!\$bp || empty(\$bp['slug']) || (strtotime(\$bp['publicar_em'] ?? '') ?: 0) > time()) continue; \$u('/blog/' . preg_replace('/[^a-z0-9-]/', '', \$bp['slug']) . '/', 'monthly', '0.6'); }\necho '</urlset>';"],
+
+  // ---------- novidades nov/2026: brinde, VIP Black Friday, WhatsApp, teste ----------
+  // brinde sem valor inventado
+  ['assets/loja.js', 'str', ' (vale R$ 89,90)<', '<'],
+  ['api/produto_page.php', 'str', " (vale R$ 89,90)</span>'", "</span>'"],
+  // pop-up de captura vira "Acesso VIP Black Friday" até 30/11 (mesmo cupom PRIMEIRA10)
+  ['assets/loja.js', 'str', 'const BRINDE_DIGITAL = ', "const MX_BF = Date.now() < Date.parse(\"2026-12-01T00:00:00-03:00\");\nconst BRINDE_DIGITAL = "],
+  ['assets/loja.js', 're', '/(<span class="brush pink tilt" style="font-size:15px">)Presente para voc[^<]*(<\/span>)/u', '$1${MX_BF ? "Acesso VIP Black Friday" : "Presente para você"}$2'],
+  ['assets/loja.js', 're', '/<h2 id="fbpT">.*?<\/h2>/', '<h2 id="fbpT">${MX_BF ? "Entre na lista VIP e ganhe <em>10% OFF</em>" : "Ganhe <em>10% OFF</em> na primeira compra"}</h2>'],
+  ['assets/loja.js', 're', '/<p>Deixe seu WhatsApp e receba o cupom agora[^<]*<\/p>/u', '<p>${MX_BF ? "Deixe seu WhatsApp: você recebe o cupom agora e fica sabendo primeiro das ofertas de Black Friday da MXD20." : "Deixe seu WhatsApp e receba o cupom agora, além de novidades e ofertas da MXD20."}</p>'],
+  ['assets/loja.js', 'str', '>Quero meu cupom</button>', '>${MX_BF ? "Quero meu acesso VIP" : "Quero meu cupom"}</button>'],
+  ['assets/loja.js', 'str', 'body: JSON.stringify({ name: $("#fbpN").value, phone: ph })', 'body: JSON.stringify({ name: $("#fbpN").value, phone: ph, origem: MX_BF ? "vip-black-friday" : "" })'],
+  ['api/inscrever.php', 'str', "'origem' => 'popup-primeira-compra'", "'origem' => in_array(\$in['origem'] ?? '', ['vip-black-friday', 'teste-da-barba'], true) ? \$in['origem'] : 'popup-primeira-compra'"],
+  // lista de ofertas no WhatsApp e teste no rodapé
+  ['assets/loja.js', 'str', '<li><a href="/pedido/">Acompanhar pedido</a></li>', '<li><a href="/pedido/">Acompanhar pedido</a></li><li><a href="https://wa.me/${LOJA.whatsapp}?text=${encodeURIComponent("Olá! Quero entrar na lista de ofertas da MXD20.")}" target="_blank" rel="noopener" data-track="Rodapé: lista de ofertas">Lista de ofertas no WhatsApp</a></li>'],
+  // WhatsApp logo abaixo das dúvidas do produto
+  ['produto/index.html', 're', '/(<div class="faq2" id="faq">.*?\n    <\/div>)/s', '$1' . "\n    " . MX_WA_FAQ],
+  // css e js novos sem cache antigo
+  ['produto/index.html', 'str', 'conteudo.js?v=13', 'conteudo.js?v=mx4'],
 
   // ---------- .htaccess ----------
   ['.htaccess', 'str', "RewriteEngine On\n", "RewriteEngine On\nRewriteRule ^_deploy/(?!instalar\\.php$) - [F,L]\n"],
